@@ -29,6 +29,9 @@ jobs:
             shortos: macos
             cmakeargs: -DTEST:BOOL=FALSE -DUSE_MKL:BOOL=FALSE -DCMAKE_BUILD_TYPE:STRING=Release -G Ninja
     steps:
+      - uses: actions/checkout@v1
+        with:
+          submodules: true
       - uses: actions/setup-python@v2
         name: Install Python
         with:
