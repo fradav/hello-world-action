@@ -1,8 +1,8 @@
 from setuptools import setup
 
-from os import getenv
+from os import getenv,path
 
-with open(path.join(this_directory, getenv("CMAKEARGSFILE")), encoding='utf-8') as f:
+with open(getenv("CMAKEARGSFILE"), encoding='utf-8') as f:
     long_description = f.read()
 
 # Available at setup time due to pyproject.toml
