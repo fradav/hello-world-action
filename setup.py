@@ -2,7 +2,8 @@ from setuptools import setup
 
 from os import getenv
 
-print("CMAKEARGSFILE : ",getenv("CMAKEARGSFILE"))
+with open(path.join(this_directory, getenv("CMAKEARGSFILE")), encoding='utf-8') as f:
+    long_description = f.read()
 
 # Available at setup time due to pyproject.toml
 from pybind11.setup_helpers import Pybind11Extension, build_ext
@@ -36,7 +37,7 @@ setup(
     author_email="sylvain.corlay@gmail.com",
     url="https://github.com/pybind/python_example",
     description="A test project using pybind11",
-    long_description="",
+    long_description=long_description,
     ext_modules=ext_modules,
     extras_require={"test": "pytest"},
     # Currently, build_ext only provides an optional "highest supported C++
