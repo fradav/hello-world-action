@@ -41,6 +41,6 @@ jobs:
           python -m pip install cibuildwheel==1.6.3
       - name: Build wheels
         env:
-          CIBW_ENVIRONMENT: "CMAKEARGSFILE=${{ runner.workspace }}/bidule.txt}}"
+          CIBW_ENVIRONMENT: "CMAKEARGSFILE=\\\"${{ github.workspace }}/bidule.txt}}\\\""
         run: |
           python -m cibuildwheel --output-dir wheelhouse
