@@ -32,6 +32,21 @@ jobs:
       - uses: actions/checkout@v1
         with:
           submodules: true
+      - name: setup x64-linux
+        run: |
+          echo machin chose > ${{ github.workspace }}/bidule.txt
+        if: matrix.os == 'ubuntu-latest'
+      - name: setup MacOS
+        run: |
+          echo machin chose > ${{ github.workspace }}/bidule.txt
+        if: matrix.os == 'macos-latest'
+      - name: Configure MSVC console (Windows)
+        if: matrix.os == 'windows-latest'
+        uses: ilammy/msvc-dev-cmd@v1.4.1
+      - name: setup windows
+        run: |
+          echo "machin chose" | Out-File -Append -FilePath ${{ github.workspace }}/bidule.txt -Encoding utf8
+        if: matrix.os == 'windows-latest'
       - uses: actions/setup-python@v2
         name: Install Python
         with:
